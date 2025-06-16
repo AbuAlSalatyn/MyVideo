@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full Screen Video</title>
+  <title>Looped Video with Sound</title>
   <style>
     html, body {
       margin: 0;
@@ -22,32 +22,12 @@
       object-fit: cover;
       z-index: 1;
     }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
-      z-index: 2;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
-  <video id="myVideo" autoplay muted loop playsinline>
+  <video id="myVideo" controls loop>
     <source src="my-video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
-  <div class="overlay" onclick="enableSound()"></div>
-
-  <script>
-    const video = document.getElementById("myVideo");
-    function enableSound() {
-      video.muted = false;
-      video.play();
-      document.querySelector(".overlay").remove();
-    }
-  </script>
 </body>
 </html>
