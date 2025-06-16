@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Short Video</title>
+  <title>Full Screen Video</title>
   <style>
     html, body {
       margin: 0;
@@ -12,32 +12,42 @@
       height: 100vh;
       width: 100vw;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: Arial, sans-serif;
-      color: #fff;
-    }
-    h1 {
-      margin-bottom: 20px;
-      font-size: 1.5rem;
     }
     video {
-      height: 90vh;
-      max-height: 90vh;
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      z-index: 2;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>🎥 My Short Video</h1>
-  <video controls autoplay muted playsinline>
+  <video id="myVideo" autoplay playsinline>
     <source src="my-video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
+  <div class="overlay" onclick="enableSound()"></div>
+
+  <script>
+    const video = document.getElementById("myVideo");
+    function enableSound() {
+      video.muted = false;
+      video.play();
+      document.querySelector(".overlay").remove(); // Remove overlay after interaction
+    }
+  </script>
 </body>
 </html>
-
-
