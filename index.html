@@ -35,7 +35,7 @@
   </style>
 </head>
 <body>
-  <video id="myVideo" autoplay playsinline>
+  <video id="myVideo" autoplay muted loop playsinline>
     <source src="my-video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
@@ -46,7 +46,7 @@
     function enableSound() {
       video.muted = false;
       video.play();
-      document.querySelector(".overlay").remove(); // Remove overlay after interaction
+      document.querySelector(".overlay").remove();
     }
   </script>
 </body>
